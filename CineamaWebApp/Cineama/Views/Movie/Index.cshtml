@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Cineama.Models.MovieModel>
+
+@Styles.Render("~/Content/Movie.css")
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<div class="col-lg-12 col-md-12 col-sm-12" id="movieWrapper">
+
+
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-12 " id="posterWraper">
+            <div id="titleDiv">
+                    <b> @Html.DisplayFor(modelItem => item.title) </b>
+
+            </div>
+            <div id="poster">
+                <img src="@Html.DisplayFor(modelItem => item.posterUrl)" width="150" height="210" />
+            </div>
+            <div>
+                @Html.ActionLink("Details", "Details", new { id = item.movieId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.movieId })
+            </div>
+        </div>
+    }
+
+</div>
+<div class="col-md-12">
+    <button>
+        @Html.ActionLink("Create New", "Create")
+    </button>
+</div>

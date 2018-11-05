@@ -1,0 +1,46 @@
+﻿@model Cineama.Models.MovieModel
+
+@Styles.Render("~/Content/Details.css")
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2> @Html.DisplayFor(model => model.title)</h2>
+<h2> @Html.HiddenFor(model => model.movieId)</h2>
+<hr />
+<div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="col-md-4 col-lg-4 col-sm-4">
+        <img src=" @Html.DisplayFor(model => model.posterUrl)" width="200" height="300" />
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-8" id="mplayer">
+        <iframe width="600" height="300" src="@Html.DisplayFor(model => model.trailer)"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12" id="details">
+        <div class="col-md-12" id="directors">
+            @Html.LabelFor(model => model.directors, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <i>  @Html.DisplayFor(model => model.directors)</i>
+        </div>
+        <div class="col-md-12" id="actors">
+            @Html.LabelFor(model => model.actors, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <i>  @Html.DisplayFor(model => model.actors)</i>
+        </div>
+        <div class="col-md-12" id="description">
+            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <i> @Html.DisplayFor(model => model.description) </i>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.movieId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+
