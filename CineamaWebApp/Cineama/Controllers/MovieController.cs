@@ -39,6 +39,7 @@ namespace Cineama.Controllers
         }
 
         // GET: Movie/Create
+
         public ActionResult Create()
         {
             return View();

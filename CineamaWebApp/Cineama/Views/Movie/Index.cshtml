@@ -21,11 +21,15 @@
 
             </div>
             <div id="poster">
-                <img src="@Html.DisplayFor(modelItem => item.posterUrl)" width="150" height="210" />
+                <a href='@Url.Action("Details", "Movie", new { id = item.movieId })'>
+                    <img src="@Html.DisplayFor(modelItem => item.posterUrl)" width="150" height="210" />
+                </a>
             </div>
             <div>
-                @Html.ActionLink("Details", "Details", new { id = item.movieId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.movieId })
+                @if (User.IsInRole("Manager"))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.movieId })
+                }
             </div>
         </div>
     }
@@ -33,6 +37,9 @@
 </div>
 <div class="col-md-12">
     <button>
-        @Html.ActionLink("Create New", "Create")
+        @if (User.IsInRole("Manager"))
+        {
+            @Html.ActionLink("Create New", "Create")
+        }
     </button>
 </div>
