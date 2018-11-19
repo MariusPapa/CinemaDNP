@@ -2,7 +2,6 @@
 
 @Styles.Render("~/Content/Movie.css")
 
-
 @{
     ViewBag.Title = "Index";
 }
@@ -36,10 +35,10 @@
 
 </div>
 <div class="col-md-12">
-    <button>
-        @if (User.IsInRole("Manager"))
-        {
+    @if (User.IsInRole("Manager"))
+    {
+        <button>
             @Html.ActionLink("Create New", "Create")
-        }
-    </button>
-</div>
+        </button>
+    }
+    </div>
